@@ -8,9 +8,12 @@
 <%
     String dsp = "none";
     String error = request.getParameter("error");
-    
+    String password="";
+    String log_in="";
     if(error != null){
         dsp = "block";
+         log_in =request.getParameter("username");
+         password =request.getParameter("password");
     }
 %>
 <!DOCTYPE html>
@@ -41,8 +44,8 @@
             <center>
                 <form action='script-login.jsp' class="loginform" method="POST">
                     <h2>Login</h2>
-                    <input type="text" class="loginput" name='username' placeholder='Username' required>
-                    <input type="password" id="pass" class="loginput" name='password' placeholder='Password' requied>
+                    <input type="text" class="loginput" name='username' placeholder='Username'value='<%= log_in %>' required>
+                    <input type="password" id="pass" class="loginput" name='password' placeholder='Password' value='<%= password %>' requied>
                     <input type='submit' class="logbtn" value='Login'>
                     <div id="error" style="display: <%=dsp%>;">
                         <p>Wrong Username or Password</p>
